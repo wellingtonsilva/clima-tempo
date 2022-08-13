@@ -17,7 +17,7 @@ const App = () => {
     try {
       if(location.length >= 3) {
         setLoading(true);
-        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&lang="pt_br"&appid=de388244ac5a52a1b0c8948dcf2134d8`);
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&lang="pt_br"&appid=`);
         let json = await response.json();
         setWeather(json);
       }

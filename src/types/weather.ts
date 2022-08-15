@@ -1,6 +1,13 @@
 export interface WeatherType { 
   coord: Coord;
-  weather?: Weather[] | null;
+  weather: [
+    {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }
+  ];
   base: string;
   main: Main;
   visibility: number;
@@ -19,12 +26,6 @@ export interface Coord {
   lat: number;
 }
 
-export interface Weather { 
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
-}
 export interface Main { 
   temp: number;
   feels_like: number;

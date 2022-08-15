@@ -12,6 +12,6 @@ export const TextInput = styled.input`
   outline:none;
 
   &:focus{
-    box-shadow: 0px 0px 10px var(--blue);
+    box-shadow: 0px 0px 10px var(--white);
   }
 `

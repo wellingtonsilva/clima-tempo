@@ -11,7 +11,7 @@ const App = () => {
   const [showInfo, setShowInfo] = useState<Boolean>(false);
 
   const handleLocation = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocatiton(event.target.value);
+    setLocatiton(event.target.value.trim());
   }
 
   const clearLocation = () => {

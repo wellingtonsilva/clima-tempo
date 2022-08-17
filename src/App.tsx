@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import * as C from './styles/App.styles';
+import * as C from './assets/styles/App.styles';
 import {WeatherType} from './types/weather';
 import { Loading } from './components/Loading';
 import {TextInput} from './components/TextInput';
-import {Button} from './components/Button'
+import {Button} from './components/Button';
+import iconLocation from './assets/icons/icon-location.svg';
 const App = () => {
   const [weather, setWeather] = useState<WeatherType>();
   const [location, setLocatiton] = useState<String>('')
@@ -41,6 +42,28 @@ const App = () => {
     }
   };
 
+  const months = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+  ];
+
+  const formatData = (data = new Date()) => {
+    const day = String(data.getDate()).padStart(2, '0');
+    const month = String(months[data.getMonth()].padStart(2, '0'));
+    const year = data.getFullYear();
+    return `${day} de ${month} ${year}` 
+  }
+
   return(
     <C.Main>
       <C.Title>Clima Tempo</C.Title>
@@ -52,21 +75,52 @@ const App = () => {
 
       {(!loading && weather?.cod === 200 && showInfo === true) && 
       <C.Box>
-        <C.TitleSearch>{weather.name}, {weather.sys.country}</C.TitleSearch>
+      
         <C.Flex>
-        <C.Colum>
-          <C.Subtitle>Temperatura</C.Subtitle>
-          <C.Text>{weather.main.temp.toFixed(0)}<sup>°C</sup></C.Text>
-          <img src={`https://openweathermap.org/img/wn/${weather.weather[0]?.icon}@2x.png`} alt={weather.weather[0].description} />
-          <C.Text><span>{weather.weather[0].description}</span></C.Text>
-        </C.Colum>
-        <C.Colum>
-          <C.Subtitle>Vento</C.Subtitle>
-          <C.Text>{weather.wind.speed} <span>km/h</span></C.Text>
+        <C.ColumLeft>
+          <div>
+          <C.Text> {formatData()}</C.Text>
+          <C.TextCity> <img src={iconLocation} alt="Icon" />  {weather.name}, {weather.sys.country}</C.TextCity>
+          </div>
+          <div style={{marginTop:'20px'}}>
+          <img style={{marginLeft:'-20px', marginBottom:'-20px'}} src={`https://openweathermap.org/img/wn/${weather.weather[0]?.icon}@2x.png`} alt={weather.weather[0].description} />
+          <C.WeatherTemp>{weather.main.temp.toFixed(0)}°C</C.WeatherTemp>
+          <C.WeatherDesc>{weather.weather[0].description}</C.WeatherDesc>
+          </div>
+        </C.ColumLeft>
+        <C.ColumRight>
+          <C.Flex>
+          <C.TitleProp style={{color:'#fff'}}>Temp Máxima: </C.TitleProp>
+          <C.Value>{weather.main.temp_max.toFixed(0)}°C</C.Value>
+          </C.Flex>
+
+          <C.Flex>
+          <C.TitleProp style={{color:'#fff'}}>Temp Mínima: </C.TitleProp>
+          <C.Value>{weather.main.temp_min.toFixed(0)}°C</C.Value>
+          </C.Flex>
+
+          <C.Flex>
+          <C.TitleProp style={{color:'#fff'}}>Sensação Térmica: </C.TitleProp>
+          <C.Value>{weather.main.feels_like.toFixed(0)}°C</C.Value>
+          </C.Flex>
+
+          <C.Flex>
+          <C.TitleProp style={{color:'#fff'}}>Vento: </C.TitleProp>
+          <C.Value>{weather.wind.speed} km/h</C.Value>
+          </C.Flex>
+          <C.Flex>
+          <C.TitleProp style={{color:'#fff'}}>Umidade: </C.TitleProp>
+          <C.Value>{weather.main.humidity}%</C.Value>
+          </C.Flex>
+          <C.Flex>
+          <C.TitleProp style={{color:'#fff'}}>Pressão Atmosférica: </C.TitleProp>
+          <C.Value>{weather.main.pressure}</C.Value>
+          </C.Flex>
+          
           <C.AirWind>
-                    <C.PointWind  style={{transform: `rotate(${weather.wind.deg}deg)`}}></C.PointWind>
-                </C.AirWind>
-        </C.Colum>
+          <C.PointWind  style={{transform: `rotate(${weather.wind.deg}deg)`}}></C.PointWind>
+          </C.AirWind>
+        </C.ColumRight>
         </C.Flex>
      </C.Box>
      }

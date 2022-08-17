@@ -1,5 +1,5 @@
 import * as C from './style';
-import icon from './icon-loading.svg'
+import icon from '../../assets/icons/icon-loading.svg'
 type LoadingProps = {
   children?: React.ReactNode;
 }

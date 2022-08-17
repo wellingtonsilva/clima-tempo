@@ -8,7 +8,7 @@ color:var(--white);
 cursor:pointer;
 font-weight:300;
 font-size:18px;
-border-radius: 0 5px 5px 0;
+border-radius: 0 10px 10px 0;
 font-family: 'Roboto', sans-serif;
 &:hover {
   background: #1d4ecb;

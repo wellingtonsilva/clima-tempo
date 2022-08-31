@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
 width:100%;
-max-width:600px;
+max-width:1000px;
 padding:20px;
 margin:0 auto;
 `
@@ -17,8 +17,9 @@ font-weight: 700;
 
 export const WrapperInput = styled.form`
 width:100%;
+max-width:600px;
 display:flex;
-margin-bottom:30px;
+margin: 0 auto 30px;
 `
 
 export const Box = styled.section`
@@ -31,6 +32,7 @@ export const TitleSearch = styled.h2`
   font-size:25px;
   color:var(--white);
   margin:0 0 20px 0;
+  text-align:center;
 `
 
 export const Subtitle = styled.p`
@@ -136,4 +138,9 @@ export const PointWind = styled.div`
   height: 1px;
   background-color: var(--white);
   transform-origin: left;
+`
+export const GoogleMap = styled.div`
+  width:100%;
+  max-width:300px;
+  border-radius:10px;
 `

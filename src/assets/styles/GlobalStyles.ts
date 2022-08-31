@@ -1,8 +1,7 @@
 import {createGlobalStyle} from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
-  @import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,700,900&display=swap');
+ 
   *{
     box-sizing: border-box;
     margin: 0;

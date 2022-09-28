@@ -43,7 +43,7 @@ export const Subtitle = styled.p`
 export const Text = styled.p`
   color:var(--white);
   font-size:16px;
-  font-weight:100;
+  font-weight:300;
 `
 export const WeatherTemp = styled.p`
   color:var(--white);
@@ -119,7 +119,7 @@ export const TitleProp = styled.p`
 `
 export const Value = styled.p`
   color:var(--white);
-  font-weight:100;
+  font-weight:300;
   font-size:16px;
 `
 

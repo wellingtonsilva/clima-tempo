@@ -7,6 +7,7 @@ import {Button} from './components/Button';
 import iconLocation from './assets/icons/icon-location.svg';
 import {formatData} from './utils/functions'
 import  Map  from './components/Map' 
+import countries from './helpers/countries'
 const App = () => {
   const [weather, setWeather] = useState<WeatherType>();
   const [location, setLocatiton] = useState<String>('')
@@ -23,6 +24,7 @@ const App = () => {
       setShowInfo(false);
     }
   }
+  
 
   const loadWeather = async (event:React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -61,7 +63,7 @@ const App = () => {
         <C.ColumLeft>
           <div>
             <C.Text> {formatData()}</C.Text>
-            <C.TextCity> <img src={iconLocation} alt="Icon" />  {weather.name}, {weather.sys.country}</C.TextCity>
+            <C.TextCity> <img src={iconLocation} alt="Icon" />  {weather.name}, {countries[weather.sys.country.trim()] }</C.TextCity>
           </div>
           <div style={{marginTop:'20px'}}>
             <img style={{marginLeft:'-20px', marginBottom:'-20px'}} src={`https://openweathermap.org/img/wn/${weather.weather[0]?.icon}@2x.png`} alt={weather.weather[0].description} />

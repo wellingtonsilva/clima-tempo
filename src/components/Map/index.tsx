@@ -12,12 +12,21 @@ const Map = ({lat, lon}:MapProps): JSX.Element => {
     googleMapsApiKey: "AIzaSyA7xHuC9w0EUSDB7YrmgJajQ06o7UN_eac"
   })
 
+
+
+  const Map = {
+    width:'100%',
+    maxWidth:'400px',
+    minHeight:'300px',
+    borderRadius:'10px'
+  }
+
   return (
     <>
     {
     isLoaded ? (
   <GoogleMap
-    mapContainerStyle={{width:'100%', maxWidth:'400px', minHeight:'300px',borderRadius:'10px'}}
+    mapContainerStyle={Map}
     center={{
       lat:lat,
       lng:lon,
